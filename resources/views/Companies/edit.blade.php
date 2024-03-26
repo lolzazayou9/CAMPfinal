@@ -11,7 +11,7 @@
     <div class="container mt-2">
         <div class="row">
             <div class="col-lg-12">
-                <h2>Edit Company</h2>
+                <h2>Edit Users Data</h2>
             </div>
             <div>
                 <a href="{{ route('companies.index')}}" class="btn btn-primary">Back</a>
@@ -27,8 +27,20 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group  my-3">
-                            <strong>Company Name</strong>
-                            <input type="text" name="name" value="{{ $company->name}}" class="form-control" placeholder="Company Name">
+                        <strong>Title</strong>
+                            <select name="title" >
+	<option value="{{ $company->title}}">คุณ</option>
+	<option value="คุณ">คุณ</option>
+</select>
+                            @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group  my-3">
+                            <strong>Name</strong>
+                            <input type="text" name="name" value="{{ $company->name}}" class="form-control">
                             @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -36,23 +48,22 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group my-3">
-                            <strong>Company Email</strong>
-                            <input type="email" name="email" value="{{ $company->email}}" class="form-control" placeholder="Company Email">
+                            <strong>Email</strong>
+                            <input type="email" name="email" value="{{ $company->email}}" class="form-control">
                             @error('email')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="form-group my-3">
-                            <strong>Company Address</strong>
-                            <input type="text" name="address" value="{{ $company->address}}" class="form-control" placeholder="Company Address">
-                            @error('address')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
+                
+                    <div>
+                        <strong>Avatar</strong>
+                            
+                            <form action="upload.php" method="post" enctype="multipart/form-data">
+                                <input type="file" name="avatar" >
+                            </form>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-">
                     <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>

@@ -11,7 +11,7 @@
     <div class="container mt-2">
         <div class="row">
             <div class="col-lg-12">
-                <h2>Add Company</h2>
+                <h2>Add Users Data</h2>
             </div>
             <div>
                 <a href="{{ route('companies.index')}}" class="btn btn-primary">Back</a>
@@ -24,10 +24,21 @@
             <form action="{{ route('companies.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
+                <div class="col-md-12">
+                        <div class="form-group  my-3">
+                        <strong>Title</strong>
+                            <select name="title" >
+	<option value="">เลือก</option>
+	<option value="คุณ">คุณ</option>
+</select>
+                            @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                     <div class="col-md-12">
                         <div class="form-group  my-3">
-                            <strong>Company Name</strong>
-                            <input type="text" name="name" class="form-control" placeholder="Company Name">
+                            <strong>Name</strong>
+                            <input type="text" name="name" class="form-control">
                             @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -35,8 +46,8 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group my-3">
-                            <strong>Company Email</strong>
-                            <input type="email" name="email" class="form-control" placeholder="Company Email">
+                            <strong>Email</strong>
+                            <input type="email" name="email" class="form-control">
                             @error('email')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -44,14 +55,20 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group my-3">
-                            <strong>Company Address</strong>
-                            <input type="text" name="address" class="form-control" placeholder="Company Address">
+                            <strong>Password</strong>
+                            <input type="text" name="address" class="form-control">
                             @error('address')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div>
+                        <strong>Avatar</strong>
+                            
+                            <form action="upload.php" method="post" enctype="multipart/form-data">
+                                <input type="file" name="avatar" >
+                            </form>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-">
                     <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
